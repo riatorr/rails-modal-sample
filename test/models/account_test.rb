@@ -29,4 +29,7 @@ class AccountTest < ActiveSupport::TestCase
     refute_predicate build(:account, email: existing.email), :valid?
   end
 
+  test "must have a valid email" do
+    refute_predicate build(:account, email: "foo"), :valid?
+  end
 end
