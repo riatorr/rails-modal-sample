@@ -22,6 +22,7 @@ This exercise is set up to use the following:
 * Vue 2.6
 * Redis
 
+* `bin/setup` to install dependencies
 
 ## Goals
 
