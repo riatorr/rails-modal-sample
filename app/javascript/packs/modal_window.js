@@ -14,20 +14,33 @@ $(function() {
 	  return fieldName;
 	};
 
-	document.body.addEventListener("ajax:error", function(event) {
-	  var detail = event.detail;
-	  var data = detail[0];
-	  var er ="<ul>";
+	window.addEventListener("click", function() {
+		var submitBtn = $("#submit-form-btn")[0];
+		if (submitBtn) {
+			document.body.addEventListener("ajax:error", function(event) {
+			  console.log('hi error');
+			  var detail = event.detail;
+			  var data = detail[0];
+			  var er ="<ul>";
 
-	  jQuery.each(data, function(i, val) {
-	  	var key = errorFieldName(i);
-	  	er += "<li>"+ key + " " + val + "</li>"
-	  });
+			  jQuery.each(data, function(i, val) {
+			  	var key = errorFieldName(i);
+			  	er += "<li>"+ key + " " + val + "</li>"
+			  });
 
-	  er+="</ul>"
+			  er+="</ul>"
 
-	  $("#error_explanation").html(er);
-	});
+			  $("#error_explanation").html(er);
+			});
+
+			document.body.addEventListener("ajax:success", function(event) {
+			  console.log('hi success')
+			  var eventObject = (event.detail[0]);
+			  var accountId = eventObject.id;
+			  location.href = '/accounts/' + accountId;
+			});
+		}
+	})
 
 	$(".close").click(function(){
         $("#modal-window").modal('hide');
