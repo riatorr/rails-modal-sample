@@ -4,10 +4,21 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+require("jquery")
+import "bootstrap"
+import "../stylesheets/application"
+import "../stylesheets/_accounts"
+require("packs/modal_window")
+ 
+// document.addEventListener("turbolinks:load", () => {
+//   $('[data-toggle="tooltip"]').tooltip()
+//   $('[data-toggle="popover"]').popover()
+// })
+
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()

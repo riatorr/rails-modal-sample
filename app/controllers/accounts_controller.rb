@@ -4,6 +4,7 @@ class AccountsController < ApplicationController
   # GET /accounts
   def index
     @accounts = Account.all
+    @account = Account.new
   end
 
   # GET /accounts/1
@@ -25,9 +26,10 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.json { render json: @account, notice: 'Account was successfully created.', status: :ok }
+
       else
-        format.html { render :new }
+        format.json { render json: @account.errors, status: :unprocessable_entity }
       end
     end
   end

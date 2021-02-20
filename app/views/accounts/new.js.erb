@@ -1,0 +1,10 @@
+// Render the new form
+$('.modal-body').html('<%= j (render "form") %>');
+ 
+// Show the dynamic dialog
+$('#modal-window').modal("show");
+ 
+// Set focus to the first element
+$('#modal-window').on('shown.bs.modal', function () {
+	$('#account_name').focus();
+});
